@@ -1,7 +1,13 @@
 <label>
   {{ label }}
-  <input type="text" [value]="value" (input)="valueChange.emit($event.target.value)" />
-  <input type="color" [value]="value" (input)="valueChange.emit($event.target.value)" />
+
+  <input type="text" [value]="value" (input)="onInput($any($event.target).value)" />
+
+  <input type="color" [value]="value" (input)="onInput($any($event.target).value)" />
 </label>
 
-<!-- <div class="preview" [style.background]="value()" style="width: 100px; height: 100px"></div> -->
+<div
+  class="preview"
+  [style.background]="value"
+  style="width: 40px; height: 40px; border-radius: 6px"
+></div>

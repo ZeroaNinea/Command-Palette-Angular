@@ -350,10 +350,28 @@
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<app-command-palette></app-command-palette>
+<app-command-palette
+  [style.--cp-bg]="palette().bg"
+  [style.--cp-text]="palette().text"
+  [style.--cp-accent]="palette().accent"
+></app-command-palette>
 
-<app-color-input value="#4FC3F7" />
-<app-color-input value="#2196F3" />
-<app-color-input value="#3949AB" />
+<app-color-input
+  label="Primary"
+  [value]="primary()"
+  (valueChange)="primary.set($event)"
+></app-color-input>
+
+<app-color-input
+  label="Secondary"
+  [value]="secondary()"
+  (valueChange)="secondary.set($event)"
+></app-color-input>
+
+<app-color-input
+  label="Tertiary"
+  [value]="tertiary()"
+  (valueChange)="tertiary.set($event)"
+></app-color-input>
 
 <router-outlet />
