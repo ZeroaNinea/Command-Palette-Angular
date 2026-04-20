@@ -9,7 +9,7 @@ import chroma from 'chroma-js';
 })
 export class ColorInput {
   @Input() label = '';
-  @Input() value = signal('#ffffff');
+  @Input() value = '#4FC3F7';
   @Output() valueChange = new EventEmitter<string>();
 
   generatePalette(base: string) {
