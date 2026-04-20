@@ -3,6 +3,6 @@ export type Command = {
   label: string;
   keywords?: string[];
   shortcut?: string;
-  payload?: any;
-  handler?: (payload: any) => void;
+  payload?: unknown;
+  handler?: (payload?: unknown) => void;
 };

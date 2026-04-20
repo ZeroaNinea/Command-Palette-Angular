@@ -28,6 +28,7 @@ export class CommandPalette {
 
   onCommand(cmd: Command) {
     this.commandSelected.emit(cmd);
+    cmd.handler?.(cmd.payload);
     this.isOpen = false;
   }
 }
