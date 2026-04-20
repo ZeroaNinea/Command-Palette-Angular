@@ -1,13 +1,25 @@
-<label>
-  {{ label }}
+<div class="input-container" [style.border-color]="value">
+  <label>{{ label }}</label>
 
-  <input type="text" [value]="value" (input)="onInput($any($event.target).value)" />
+  <div class="input">
+    <input
+      type="text"
+      [value]="value"
+      (input)="onInput($any($event.target).value)"
+      class="color-text"
+    />
 
-  <input type="color" [value]="value" (input)="onInput($any($event.target).value)" />
-</label>
+    <input
+      type="color"
+      [value]="value"
+      (input)="onInput($any($event.target).value)"
+      class="color-picker"
+    />
+  </div>
+</div>
 
-<div
+<!-- <div
   class="preview"
   [style.background]="value"
   style="width: 40px; height: 40px; border-radius: 6px"
-></div>
+></div> -->
