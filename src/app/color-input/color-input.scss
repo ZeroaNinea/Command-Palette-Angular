@@ -18,10 +18,25 @@ label {
   top: 0.3rem;
   font-size: 0.9rem;
   color: var(--cp-input-label);
-  background: white;
+  background-color: white;
   padding: 0 4px;
   pointer-events: none;
   transition: all 0.2s ease;
+  z-index: 1;
+}
+
+.text-overlay {
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+  width: calc(100% - 2.4rem);
+  height: 1rem;
+  background-color: white;
+}
+
+.input-container:hover .text-overlay,
+.input-container:focus-within .text-overlay {
+  width: fit-content;
 }
 
 .input-container:hover label,
@@ -45,10 +60,24 @@ input {
   cursor: pointer;
 }
 
+.color-picker::-moz-color-swatch {
+  border: none;
+}
+
+.color-picker::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 8px;
+}
+
+.color-picker::-webkit-color-swatch {
+  border: none;
+}
+
 .color-text {
   height: 2rem;
   border: none;
   padding-left: 0.5rem;
+  color: var(--cp-input-text);
   width: 100%;
 }
 

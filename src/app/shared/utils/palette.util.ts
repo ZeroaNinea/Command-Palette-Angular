@@ -6,6 +6,8 @@ export function createPalette(base: string) {
     .mode('lab')
     .colors(10);
 
+  const bg = scale[9];
+
   return {
     50: scale[0],
     100: scale[1],
@@ -23,7 +25,8 @@ export function createPalette(base: string) {
     surface: scale[8],
     surfaceAlt: scale[7],
     border: scale[6],
-    text: chroma.contrast(scale[9], '#fff') > 4.5 ? '#fff' : '#111',
+    text: chroma.contrast(scale[9], '#fff') > 4.5 ? '#111' : '#fff',
+    // text: chroma.contrast(bg, '#fff') > 4.5 ? '#111' : '#fff',
     textMuted: scale[3],
     accent: scale[4],
     accentHover: scale[3],
