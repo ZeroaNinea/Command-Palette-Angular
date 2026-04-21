@@ -10,11 +10,14 @@
       class="color-text"
     />
 
-    <input
-      type="color"
-      [value]="value"
-      (input)="onInput($any($event.target).value)"
-      class="color-picker"
-    />
+    <div class="color-picker-wrapper" (click)="createRipple($event)">
+      <input
+        type="color"
+        [value]="value"
+        (input)="onInput($any($event.target).value)"
+        class="color-picker"
+      />
+      <span class="ripple"></span>
+    </div>
   </div>
 </div>
