@@ -8,7 +8,7 @@
 .input-container {
   position: relative;
   // width: 200%;
-  border-bottom: 2px solid var(--cp-border);
+  border-bottom: 2px solid var(--cp-input-border);
   transition: border-color 0.2s ease;
 }
 
@@ -17,7 +17,7 @@ label {
   left: 0.5rem;
   top: 0.3rem;
   font-size: 0.9rem;
-  color: var(--gray-500);
+  color: var(--cp-input-label);
   background: white;
   padding: 0 4px;
   pointer-events: none;
@@ -28,7 +28,7 @@ label {
 .input-container:focus-within label {
   top: -0.6rem;
   font-size: 0.7rem;
-  color: var(--gray-700);
+  color: var(--cp-label-muted);
 }
 
 input {
