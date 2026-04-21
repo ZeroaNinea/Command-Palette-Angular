@@ -11,6 +11,7 @@ export type Palette = {
   '900': string;
   bg: string;
   surface: string;
+  surfaceAlt: string;
   border: string;
   text: string;
   textMuted: string;

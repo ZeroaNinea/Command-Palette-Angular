@@ -1,6 +1,7 @@
 import chroma from 'chroma-js';
+import { Palette } from '../../../types/palette.alias';
 
-export function createPalette(base: string) {
+export function createPalette(base: string): Palette {
   const scale = chroma
     .scale([chroma(base).brighten(3), base, chroma(base).darken(3)])
     .mode('lab')
