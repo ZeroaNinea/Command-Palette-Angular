@@ -6,7 +6,7 @@ export function createPalette(base: string) {
     .mode('lab')
     .colors(10);
 
-  const bg = scale[9];
+  // const bg = scale[9];
 
   return {
     50: scale[0],
@@ -36,5 +36,8 @@ export function createPalette(base: string) {
     hover: chroma(base).brighten(0.5).hex(),
     active: chroma(base).darken(0.5).hex(),
     focus: chroma(base).saturate(1).hex(),
+
+    // Base
+    base: base,
   };
 }
