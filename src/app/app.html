@@ -392,6 +392,39 @@
       [style.--cp-border]="tertiaryPalette().border"
       [style.--cp-surface]="tertiaryPalette().surface"
     ></app-color-input>
+
+    <app-color-input
+      label="Neutral"
+      [value]="neutral()"
+      (valueChange)="neutral.set($event)"
+      [style.--cp-bg]="neutralPalette().bg"
+      [style.--cp-text]="neutralPalette().text"
+      [style.--cp-accent]="neutralPalette().accent"
+      [style.--cp-border]="neutralPalette().border"
+      [style.--cp-surface]="neutralPalette().surface"
+    ></app-color-input>
+
+    <app-color-input
+      label="Neutral Variant"
+      [value]="neutralVariant()"
+      (valueChange)="neutralVariant.set($event)"
+      [style.--cp-bg]="neutralVariantPalette().bg"
+      [style.--cp-text]="neutralVariantPalette().text"
+      [style.--cp-accent]="neutralVariantPalette().accent"
+      [style.--cp-border]="neutralVariantPalette().border"
+      [style.--cp-surface]="neutralVariantPalette().surface"
+    ></app-color-input>
+
+    <app-color-input
+      label="Error"
+      [value]="error()"
+      (valueChange)="error.set($event)"
+      [style.--cp-bg]="errorPalette().bg"
+      [style.--cp-text]="errorPalette().text"
+      [style.--cp-accent]="errorPalette().accent"
+      [style.--cp-border]="errorPalette().border"
+      [style.--cp-surface]="errorPalette().surface"
+    ></app-color-input>
   </div>
 </div>
 
