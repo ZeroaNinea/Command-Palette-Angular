@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
-import chroma from 'chroma-js';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-color-input',
