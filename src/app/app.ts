@@ -21,8 +21,32 @@ export class App {
   secondary = signal('#2196F3');
   tertiary = signal('#3949AB');
 
-  palette = computed<Palette>(() => {
+  primaryPalette = computed<Palette>(() => {
     const base = this.primary();
+
+    return {
+      bg: chroma(base).darken(2).hex(),
+      surface: chroma(base).darken(1).hex(),
+      text: chroma(base).luminance(0.9).hex(),
+      accent: chroma.scale([base, '#ffffff']).mode('lab')(0.3).hex(),
+      border: chroma(base).brighten(1).hex(),
+    };
+  });
+
+  secondaryPalette = computed<Palette>(() => {
+    const base = this.secondary();
+
+    return {
+      bg: chroma(base).darken(2).hex(),
+      surface: chroma(base).darken(1).hex(),
+      text: chroma(base).luminance(0.9).hex(),
+      accent: chroma.scale([base, '#ffffff']).mode('lab')(0.3).hex(),
+      border: chroma(base).brighten(1).hex(),
+    };
+  });
+
+  tertiaryPalette = computed<Palette>(() => {
+    const base = this.tertiary();
 
     return {
       bg: chroma(base).darken(2).hex(),

@@ -351,9 +351,11 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <app-command-palette
-  [style.--cp-bg]="palette().bg"
-  [style.--cp-text]="palette().text"
-  [style.--cp-accent]="palette().accent"
+  [style.--cp-bg]="primaryPalette().bg"
+  [style.--cp-text]="primaryPalette().text"
+  [style.--cp-accent]="primaryPalette().accent"
+  [style.--cp-border]="primaryPalette().border"
+  [style.--cp-surface]="primaryPalette().surface"
 ></app-command-palette>
 
 <div class="color-inputs">
@@ -362,32 +364,63 @@
       label="Primary"
       [value]="primary()"
       (valueChange)="primary.set($event)"
+      [style.--cp-bg]="primaryPalette().bg"
+      [style.--cp-text]="primaryPalette().text"
+      [style.--cp-accent]="primaryPalette().accent"
+      [style.--cp-border]="primaryPalette().border"
+      [style.--cp-surface]="primaryPalette().surface"
     ></app-color-input>
 
     <app-color-input
       label="Secondary"
       [value]="secondary()"
       (valueChange)="secondary.set($event)"
+      [style.--cp-bg]="secondaryPalette().bg"
+      [style.--cp-text]="secondaryPalette().text"
+      [style.--cp-accent]="secondaryPalette().accent"
+      [style.--cp-border]="secondaryPalette().border"
+      [style.--cp-surface]="secondaryPalette().surface"
     ></app-color-input>
 
     <app-color-input
       label="Tertiary"
       [value]="tertiary()"
       (valueChange)="tertiary.set($event)"
+      [style.--cp-bg]="tertiaryPalette().bg"
+      [style.--cp-text]="tertiaryPalette().text"
+      [style.--cp-accent]="tertiaryPalette().accent"
+      [style.--cp-border]="tertiaryPalette().border"
+      [style.--cp-surface]="tertiaryPalette().surface"
     ></app-color-input>
   </div>
 </div>
 
 <div style="display: flex; gap: 8px; margin-top: 16px">
-  <div [style.background]="palette().bg" class="swatch" style="width: 50px; height: 50px"></div>
   <div
-    [style.background]="palette().surface"
+    [style.background]="primaryPalette().bg"
     class="swatch"
     style="width: 50px; height: 50px"
   ></div>
-  <div [style.background]="palette().accent" class="swatch" style="width: 50px; height: 50px"></div>
-  <div [style.background]="palette().text" class="swatch" style="width: 50px; height: 50px"></div>
-  <div [style.background]="palette().border" class="swatch" style="width: 50px; height: 50px"></div>
+  <div
+    [style.background]="primaryPalette().surface"
+    class="swatch"
+    style="width: 50px; height: 50px"
+  ></div>
+  <div
+    [style.background]="primaryPalette().accent"
+    class="swatch"
+    style="width: 50px; height: 50px"
+  ></div>
+  <div
+    [style.background]="primaryPalette().text"
+    class="swatch"
+    style="width: 50px; height: 50px"
+  ></div>
+  <div
+    [style.background]="primaryPalette().border"
+    class="swatch"
+    style="width: 50px; height: 50px"
+  ></div>
 </div>
 
 <router-outlet />
