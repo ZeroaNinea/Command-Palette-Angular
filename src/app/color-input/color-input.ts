@@ -14,10 +14,6 @@ export class ColorInput {
   @Output() valueChange = new EventEmitter<string>();
 
   getColorPickerOverlayColor() {
-    // const scale = chroma
-    //   .scale([chroma(this.value).brighten(3), this.value, chroma(this.value).darken(3)])
-    //   .mode('lab')
-    //   .colors(10);
     return chroma.contrast(this.value, '#fff') > 4.5 ? '#fff' : '#000';
   }
 
