@@ -1,7 +1,7 @@
 import { Component, computed, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import chroma from 'chroma-js';
+import { createPalette } from './shared/utils/palette.util';
 
 import { Palette } from '../types/palette.alias';
 
@@ -24,75 +24,10 @@ export class App {
   neutralVariant = signal('#78909C');
   error = signal('#E01B24');
 
-  primaryPalette = computed<Palette>(() => {
-    const base = this.primary();
-
-    return {
-      bg: chroma(base).darken(2).hex(),
-      surface: chroma(base).darken(1).hex(),
-      text: chroma(base).luminance(0.9).hex(),
-      accent: chroma.scale([base, '#ffffff']).mode('lab')(0.3).hex(),
-      border: chroma(base).brighten(1).hex(),
-    };
-  });
-
-  secondaryPalette = computed<Palette>(() => {
-    const base = this.secondary();
-
-    return {
-      bg: chroma(base).darken(2).hex(),
-      surface: chroma(base).darken(1).hex(),
-      text: chroma(base).luminance(0.9).hex(),
-      accent: chroma.scale([base, '#ffffff']).mode('lab')(0.3).hex(),
-      border: chroma(base).brighten(1).hex(),
-    };
-  });
-
-  tertiaryPalette = computed<Palette>(() => {
-    const base = this.tertiary();
-
-    return {
-      bg: chroma(base).darken(2).hex(),
-      surface: chroma(base).darken(1).hex(),
-      text: chroma(base).luminance(0.9).hex(),
-      accent: chroma.scale([base, '#ffffff']).mode('lab')(0.3).hex(),
-      border: chroma(base).brighten(1).hex(),
-    };
-  });
-
-  neutralPalette = computed<Palette>(() => {
-    const base = this.neutral();
-
-    return {
-      bg: chroma(base).darken(2).hex(),
-      surface: chroma(base).darken(1).hex(),
-      text: chroma(base).luminance(0.9).hex(),
-      accent: chroma.scale([base, '#ffffff']).mode('lab')(0.3).hex(),
-      border: chroma(base).brighten(1).hex(),
-    };
-  });
-
-  neutralVariantPalette = computed<Palette>(() => {
-    const base = this.neutralVariant();
-
-    return {
-      bg: chroma(base).darken(2).hex(),
-      surface: chroma(base).darken(1).hex(),
-      text: chroma(base).luminance(0.9).hex(),
-      accent: chroma.scale([base, '#ffffff']).mode('lab')(0.3).hex(),
-      border: chroma(base).brighten(1).hex(),
-    };
-  });
-
-  errorPalette = computed<Palette>(() => {
-    const base = this.error();
-
-    return {
-      bg: chroma(base).darken(2).hex(),
-      surface: chroma(base).darken(1).hex(),
-      text: chroma(base).luminance(0.9).hex(),
-      accent: chroma.scale([base, '#ffffff']).mode('lab')(0.3).hex(),
-      border: chroma(base).brighten(1).hex(),
-    };
-  });
+  primaryPalette = computed(() => createPalette(this.primary()));
+  secondaryPalette = computed(() => createPalette(this.secondary()));
+  tertiaryPalette = computed(() => createPalette(this.tertiary()));
+  neutralPalette = computed(() => createPalette(this.neutral()));
+  neutralVariantPalette = computed(() => createPalette(this.neutralVariant()));
+  errorPalette = computed(() => createPalette(this.error()));
 }
