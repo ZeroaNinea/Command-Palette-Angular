@@ -7,7 +7,7 @@
 
 .input-container {
   position: relative;
-  // width: 200%;
+  background-color: var(--cp-bg);
   border-bottom: 2px solid var(--cp-input-border);
   transition: border-color 0.2s ease;
 }
@@ -18,7 +18,7 @@ label {
   top: 0.3rem;
   font-size: 0.9rem;
   color: var(--cp-input-label);
-  background-color: white;
+  background-color: var(--cp-bg);
   padding: 0 4px;
   pointer-events: none;
   transition: all 0.2s ease;
@@ -31,7 +31,7 @@ label {
   top: 0.5rem;
   width: calc(100% - 2.4rem);
   height: 1rem;
-  background-color: white;
+  background-color: var(--cp-bg);
 }
 
 .input-container:hover .text-overlay,
@@ -79,6 +79,7 @@ input {
   padding-left: 0.5rem;
   color: var(--cp-input-text);
   width: 100%;
+  background-color: var(--cp-bg);
 }
 
 .color-text:focus {

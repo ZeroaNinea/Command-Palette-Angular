@@ -21,7 +21,7 @@ export function createPalette(base: string) {
     900: scale[9],
 
     // Semantic roles.
-    bg: scale[9],
+    bg: scale[0],
     surface: scale[8],
     surfaceAlt: scale[7],
     border: scale[6],
