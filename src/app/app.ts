@@ -21,7 +21,7 @@ export class App {
   secondary = signal('#2196F3');
   tertiary = signal('#3949AB');
   neutral = signal('#929CA6');
-  neutralVariant = signal('#78909C');
+  neutralVariant = signal('#6E8E9D');
   error = signal('#E01B24');
 
   primaryPalette = computed(() => createPalette(this.primary()));
