@@ -13,10 +13,12 @@ export type Palette = {
   surface: string;
   border: string;
   text: string;
+  textMuted: string;
   accent: string;
   accentHover: string;
   accentActive: string;
   hover: string;
   active: string;
   focus: string;
+  base: string;
 };

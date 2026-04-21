@@ -24,10 +24,10 @@ export class App {
   neutralVariant = signal('#6E8E9D');
   error = signal('#E01B24');
 
-  primaryPalette = computed(() => createPalette(this.primary()));
-  secondaryPalette = computed(() => createPalette(this.secondary()));
-  tertiaryPalette = computed(() => createPalette(this.tertiary()));
-  neutralPalette = computed(() => createPalette(this.neutral()));
-  neutralVariantPalette = computed(() => createPalette(this.neutralVariant()));
-  errorPalette = computed(() => createPalette(this.error()));
+  primaryPalette = computed<Palette>(() => createPalette(this.primary()));
+  secondaryPalette = computed<Palette>(() => createPalette(this.secondary()));
+  tertiaryPalette = computed<Palette>(() => createPalette(this.tertiary()));
+  neutralPalette = computed<Palette>(() => createPalette(this.neutral()));
+  neutralVariantPalette = computed<Palette>(() => createPalette(this.neutralVariant()));
+  errorPalette = computed<Palette>(() => createPalette(this.error()));
 }
