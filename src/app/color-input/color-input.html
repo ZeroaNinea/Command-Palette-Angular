@@ -18,7 +18,12 @@
         class="color-picker"
       />
       <span class="ripple"></span>
-      <div class="color-picker-overlay"></div>
+      <div
+        [style.background]="
+          'color-mix(in oklab, var(--cp-base) 0%, ' + getColorPickerOverlayColor() + ' 20%)'
+        "
+        class="color-picker-overlay"
+      ></div>
     </div>
   </div>
 </div>

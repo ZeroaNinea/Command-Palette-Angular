@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+import chroma from 'chroma-js';
+
 @Component({
   selector: 'app-color-input',
   imports: [],
@@ -10,6 +12,14 @@ export class ColorInput {
   @Input() label = '';
   @Input() value = '#4FC3F7';
   @Output() valueChange = new EventEmitter<string>();
+
+  getColorPickerOverlayColor() {
+    // const scale = chroma
+    //   .scale([chroma(this.value).brighten(3), this.value, chroma(this.value).darken(3)])
+    //   .mode('lab')
+    //   .colors(10);
+    return chroma.contrast(this.value, '#fff') > 4.5 ? '#fff' : '#000';
+  }
 
   onInput(value: string) {
     this.valueChange.emit(value);
