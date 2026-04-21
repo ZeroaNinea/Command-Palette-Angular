@@ -19,7 +19,7 @@ export class App {
 
   primary = signal('#4FC3F7');
   secondary = signal('#2196F3');
-  tertiary = signal('#3949AB');
+  tertiary = signal('#0976CC');
   neutral = signal('#929CA6');
   neutralVariant = signal('#6E8E9D');
   error = signal('#E01B24');
