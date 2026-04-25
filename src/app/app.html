@@ -1,4 +1,4 @@
-<main [style.--cp-bg]="neutralPalette().bg">
+<main [style.--cp-bg]="neutralPalette().bg" (keydown)="toggleCommandPalette($event)">
   <app-command-palette
     [style.--cp-bg]="neutralPalette().bg"
     [style.--cp-surface]="neutralPalette().surface"
@@ -6,6 +6,7 @@
     [style.--cp-text]="neutralPalette().text"
     [style.--cp-accent]="primaryPalette().accent"
     [style.--cp-hover]="neutralPalette().hover"
+    [isOpen]="isOpen()"
   ></app-command-palette>
 
   <section id="color-setup">

@@ -17,6 +17,8 @@ import { ColorInput } from './color-input/color-input';
 export class App {
   protected readonly title = signal('Command-Palette-Angular');
 
+  isOpen = signal(false);
+
   primary = signal('#4FC3F7');
   secondary = signal('#2196F3');
   tertiary = signal('#086CBC');
@@ -30,4 +32,10 @@ export class App {
   neutralPalette = computed<Palette>(() => createPalette(this.neutral()));
   neutralVariantPalette = computed<Palette>(() => createPalette(this.neutralVariant()));
   errorPalette = computed<Palette>(() => createPalette(this.error()));
+
+  toggleCommandPalette(e: KeyboardEvent) {
+    if (e.ctrlKey && e.shiftKey && e.key === 'P') {
+      this.isOpen.set(!this.isOpen());
+    }
+  }
 }

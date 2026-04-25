@@ -11,12 +11,12 @@ import { Command } from '../../types/command.alias';
 })
 export class CommandPalette {
   @Input() commands: Command[] = [];
+  @Input() isOpen: boolean = false;
   @Output() commandSelected = new EventEmitter<Command>();
 
   query = '';
   filtered: Command[] = [];
   activeIndex = 0;
-  isOpen = false;
 
   filter() {
     const q = this.query.toLowerCase();
