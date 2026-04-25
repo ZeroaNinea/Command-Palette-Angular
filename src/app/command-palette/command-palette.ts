@@ -12,7 +12,9 @@ import { Command } from '../../types/command.alias';
 export class CommandPalette {
   @Input() commands: Command[] = [];
   @Input() isOpen: boolean = false;
+
   @Output() commandSelected = new EventEmitter<Command>();
+  @Output() isOpenChange = new EventEmitter<boolean>();
 
   query = '';
   filtered: Command[] = [];
@@ -32,5 +34,9 @@ export class CommandPalette {
     this.commandSelected.emit(cmd);
     cmd.handler?.(cmd.payload);
     this.isOpen = false;
+  }
+
+  close() {
+    this.isOpenChange.emit(false);
   }
 }

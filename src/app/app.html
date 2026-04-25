@@ -7,6 +7,7 @@
     [style.--cp-accent]="primaryPalette().accent"
     [style.--cp-hover]="neutralPalette().hover"
     [isOpen]="isOpen()"
+    (isOpenChange)="isOpen.set($event)"
   ></app-command-palette>
 
   <section id="color-setup">

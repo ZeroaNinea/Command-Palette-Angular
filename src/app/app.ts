@@ -21,7 +21,7 @@ export class App {
 
   @HostListener('window:keydown', ['$event'])
   handleKeydown(e: KeyboardEvent) {
-    // Open with Ctrl + /.
+    // Open with Ctrl + "/".
     if (e.ctrlKey && e.key.toLowerCase() === '/') {
       e.preventDefault();
       this.isOpen.set(!this.isOpen());

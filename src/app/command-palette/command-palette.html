@@ -1,6 +1,6 @@
 @if (isOpen) {
-  <div class="overlay">
-    <div class="palette">
+  <div (click)="close()" class="overlay">
+    <div (click)="$event.stopPropagation()" class="palette">
       <input placeholder="Type a command..." class="search" />
       <div class="list">
         <div class="item active">Command</div>
