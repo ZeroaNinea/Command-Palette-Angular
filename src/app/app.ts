@@ -7,6 +7,7 @@ import { Palette } from '../types/palette.alias';
 
 import { CommandPalette } from './command-palette/command-palette';
 import { ColorInput } from './color-input/color-input';
+import { Command } from '../types/command.alias';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,29 @@ import { ColorInput } from './color-input/color-input';
 })
 export class App {
   protected readonly title = signal('Command-Palette-Angular');
+
+  commands: Command[] = [
+    // id: string;
+    // label: string;
+    // keywords?: string[];
+    // shortcut?: string;
+    // payload?: unknown;
+    // handler?: (payload?: unknown) => void;
+    {
+      id: 'alert-1',
+      label: 'Alert 1',
+      keywords: ['alert', '1'],
+      shortcut: 'a1',
+      handler: () => alert('Alert 1'),
+    },
+    {
+      id: 'alert-2',
+      label: 'Alert 2',
+      keywords: ['alert', '2'],
+      shortcut: 'a2',
+      handler: () => alert('Alert 2'),
+    },
+  ];
 
   isOpen = signal(false);
 
@@ -46,4 +70,9 @@ export class App {
   neutralPalette = computed<Palette>(() => createPalette(this.neutral()));
   neutralVariantPalette = computed<Palette>(() => createPalette(this.neutralVariant()));
   errorPalette = computed<Palette>(() => createPalette(this.error()));
+
+  onCommand(cmd: Command) {
+    this.isOpen.set(false);
+    cmd.handler?.(cmd.payload);
+  }
 }
