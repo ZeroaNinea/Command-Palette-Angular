@@ -43,11 +43,6 @@ export class CommandPalette implements OnChanges, AfterViewChecked {
       this.filtered = [];
       this.activeIndex = 0;
     }
-
-    setTimeout(() => {
-      const el = document.querySelector('.item.active');
-      el?.scrollIntoView({ block: 'nearest' });
-    });
   }
 
   ngAfterViewChecked() {
@@ -101,5 +96,10 @@ export class CommandPalette implements OnChanges, AfterViewChecked {
     if (e.key === 'Escape') {
       this.close();
     }
+
+    setTimeout(() => {
+      const el = document.querySelector('.item.active');
+      el?.scrollIntoView({ block: 'nearest' });
+    });
   }
 }

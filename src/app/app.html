@@ -2,8 +2,8 @@
   <app-command-palette
     [style.--cp-bg]="neutralPalette().bg"
     [style.--cp-surface]="neutralPalette().surface"
-    [style.--cp-border]="neutralPalette().border"
-    [style.--cp-text]="neutralPalette().text"
+    [style.--cp-border]="neutralVariantPalette().border"
+    [style.--cp-text]="neutralVariantPalette()['100']"
     [style.--cp-accent]="primaryPalette().accent"
     [style.--cp-hover]="neutralPalette().hover"
     [isOpen]="isOpen()"
