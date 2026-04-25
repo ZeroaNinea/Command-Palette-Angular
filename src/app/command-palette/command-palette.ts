@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 import { Command } from '../../types/command.alias';
 
 @Component({
   selector: 'app-command-palette',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './command-palette.html',
   styleUrl: './command-palette.scss',
 })

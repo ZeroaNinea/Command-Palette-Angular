@@ -1,0 +1,65 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); // not from palette
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 10vh;
+  z-index: 1000;
+}
+
+.palette {
+  width: 500px;
+  max-width: 90%;
+  border-radius: 12px;
+  background: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.search {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  background: var(--cp-surface);
+  color: var(--cp-text);
+  font-size: 1rem;
+  border-bottom: 1px solid var(--cp-border);
+}
+
+.list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.item {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  color: var(--cp-text);
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: var(--cp-hover);
+  }
+
+  &.active {
+    background: var(--cp-accent);
+    color: #fff;
+  }
+}

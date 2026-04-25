@@ -1,1 +1,11 @@
-<p style="margin: 0">command-palette works!</p>
+@if (isOpen) {
+  <div class="overlay">
+    <div class="palette">
+      <input placeholder="Type a command..." class="search" />
+      <div class="list">
+        <div class="item active">Command</div>
+        <div class="item">Command</div>
+      </div>
+    </div>
+  </div>
+}

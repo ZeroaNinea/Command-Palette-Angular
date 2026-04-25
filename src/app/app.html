@@ -1,10 +1,11 @@
 <main [style.--cp-bg]="neutralPalette().bg">
   <app-command-palette
-    [style.--cp-bg]="primaryPalette().bg"
-    [style.--cp-text]="primaryPalette().text"
+    [style.--cp-bg]="neutralPalette().bg"
+    [style.--cp-surface]="neutralPalette().surface"
+    [style.--cp-border]="neutralPalette().border"
+    [style.--cp-text]="neutralPalette().text"
     [style.--cp-accent]="primaryPalette().accent"
-    [style.--cp-border]="primaryPalette().border"
-    [style.--cp-surface]="primaryPalette().surface"
+    [style.--cp-hover]="neutralPalette().hover"
   ></app-command-palette>
 
   <section id="color-setup">
