@@ -1,12 +1,21 @@
 @if (isOpen) {
   <div (click)="close()" class="overlay">
     <div (click)="$event.stopPropagation()" class="palette">
-      <input placeholder="Type a command..." class="search" />
+      <input
+        #searchInput
+        class="search"
+        placeholder="Type a command..."
+        [(ngModel)]="query"
+        (input)="filter()"
+        (keydown)="onKeydown($event)"
+      />
       <div class="list">
         <!-- <div class="item active">Command</div>
         <div class="item">Command</div> -->
-        @for (command of filtered; track $index) {
-          <div class="item" (click)="onCommand(command)">{{ command.label }}</div>
+        @for (command of visibleCommands; track $index; let i = $index) {
+          <div class="item" [class.active]="i === activeIndex" (click)="onCommand(command)">
+            {{ command.label }}
+          </div>
         }
       </div>
     </div>
