@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, signal, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { createPalette } from './shared/utils/palette.util';
@@ -19,6 +19,20 @@ export class App {
 
   isOpen = signal(false);
 
+  @HostListener('window:keydown', ['$event'])
+  handleKeydown(e: KeyboardEvent) {
+    // Open with Ctrl + /.
+    if (e.ctrlKey && e.key.toLowerCase() === '/') {
+      e.preventDefault();
+      this.isOpen.set(!this.isOpen());
+    }
+
+    // Close with Escape
+    if (e.key === 'Escape') {
+      this.isOpen.set(false);
+    }
+  }
+
   primary = signal('#4FC3F7');
   secondary = signal('#2196F3');
   tertiary = signal('#086CBC');
@@ -32,10 +46,4 @@ export class App {
   neutralPalette = computed<Palette>(() => createPalette(this.neutral()));
   neutralVariantPalette = computed<Palette>(() => createPalette(this.neutralVariant()));
   errorPalette = computed<Palette>(() => createPalette(this.error()));
-
-  toggleCommandPalette(e: KeyboardEvent) {
-    if (e.ctrlKey && e.shiftKey && e.key === 'P') {
-      this.isOpen.set(!this.isOpen());
-    }
-  }
 }
