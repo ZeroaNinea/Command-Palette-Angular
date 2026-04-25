@@ -27,7 +27,7 @@ export class App {
       this.isOpen.set(!this.isOpen());
     }
 
-    // Close with Escape
+    // Close with Escape.
     if (e.key === 'Escape') {
       this.isOpen.set(false);
     }
