@@ -22,5 +22,5 @@ npx angular-cli-ghpages --dir=dist/Command-Palette-Angular/browser
 
 ## Links
 
-- Medium: [https://medium.com/@heghine.dev357/creating-a-command-palette-component-in-angular-part-1-466a8f2dd7f5](https://medium.com/@heghine.dev357/creating-a-command-palette-component-in-angular-part-1-466a8f2dd7f5)
-- Dev.to: [https://dev.to/zeroaninea_8bec34a4e7d029/creating-a-command-palette-component-in-angular-part-1-bh1](https://dev.to/zeroaninea_8bec34a4e7d029/creating-a-command-palette-component-in-angular-part-1-bh1)
+- Medium (Part 1): [https://medium.com/@heghine.dev357/creating-a-command-palette-component-in-angular-part-1-466a8f2dd7f5](https://medium.com/@heghine.dev357/creating-a-command-palette-component-in-angular-part-1-466a8f2dd7f5)
+- Dev.to (Part 1): [https://dev.to/zeroaninea_8bec34a4e7d029/creating-a-command-palette-component-in-angular-part-1-bh1](https://dev.to/zeroaninea_8bec34a4e7d029/creating-a-command-palette-component-in-angular-part-1-bh1)
