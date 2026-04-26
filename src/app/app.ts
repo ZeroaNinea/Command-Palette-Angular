@@ -39,6 +39,25 @@ export class App {
       shortcut: 'a2',
       handler: () => alert('Alert 2'),
     },
+    {
+      id: 'primary-red',
+      label: 'Set Primary to Red',
+      handler: () => this.primary.set('#ff4d4f'),
+    },
+    {
+      id: 'primary-blue',
+      label: 'Set Primary to Blue',
+      handler: () => this.primary.set('#4FC3F7'),
+    },
+    {
+      id: 'reset',
+      label: 'Reset Colors',
+      handler: () => {
+        this.primary.set('#4FC3F7');
+        this.secondary.set('#2196F3');
+        this.tertiary.set('#086CBC');
+      },
+    },
   ];
 
   isOpen = signal(false);
