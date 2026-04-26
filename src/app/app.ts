@@ -94,4 +94,29 @@ export class App {
     this.isOpen.set(false);
     cmd.handler?.(cmd.payload);
   }
+
+  createRipple(event: MouseEvent) {
+    const button = event.currentTarget as HTMLElement;
+    const ripple = button.querySelector('.ripple') as HTMLElement;
+
+    const rect = button.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+
+    const x = event.clientX - rect.left - size / 2;
+    const y = event.clientY - rect.top - size / 2;
+
+    ripple.style.width = ripple.style.height = `${size}px`;
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+
+    ripple.classList.remove('active');
+    void ripple.offsetWidth;
+    ripple.classList.add('active');
+  }
+
+  setTimeout(handler: () => void, timeout: number) {
+    setTimeout(() => {
+      handler();
+    }, timeout);
+  }
 }

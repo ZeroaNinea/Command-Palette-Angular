@@ -32,7 +32,14 @@
     </p>
 
     <div class="actions">
-      <button (click)="isOpen.set(true)" class="open-btn">Open Command Palette</button>
+      <!-- <button (click)="isOpen.set(true)" class="open-btn">Open Command Palette</button> -->
+      <button
+        class="open-btn ripple-btn"
+        (click)="setTimeout(() => isOpen.set(true), 500); createRipple($event)"
+      >
+        Open Command Palette
+        <span class="ripple"></span>
+      </button>
 
       <div class="hint">Press <kbd>Ctrl</kbd> + <kbd>/</kbd></div>
     </div>
@@ -44,6 +51,19 @@
         <li>Toggle Theme</li>
         <li>Reset Colors</li>
       </ul>
+    </div>
+
+    <div class="links">
+      <a
+        href="https://github.com/ZeroaNinea/Command-Palette-Angular"
+        target="_blank"
+        class="github-btn ripple-btn"
+        (click)="createRipple($event)"
+      >
+        View on GitHub
+        <img src="./github.svg" alt="GitHub" />
+        <span class="ripple"></span>
+      </a>
     </div>
   </section>
 
