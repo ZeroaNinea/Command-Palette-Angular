@@ -12,6 +12,41 @@
     (commandSelected)="onCommand($event)"
   ></app-command-palette>
 
+  <section
+    class="hero"
+    [style.--cp-bg]="neutralPalette().bg"
+    [style.--cp-surface]="neutralPalette().surface"
+    [style.--cp-border]="neutralVariantPalette().border"
+    [style.--cp-text]="primaryPalette().text"
+    [style.--cp-on-surface]="neutralVariantPalette()['100']"
+    [style.--cp-accent]="secondaryPalette().accent"
+    [style.--cp-on-accent]="secondaryPalette()['50']"
+    [style.--cp-hover]="neutralPalette().hover"
+    [style.--cp-label-muted]="neutralPalette()['600']"
+    [style.--cp-section-title]="tertiaryPalette()['900']"
+  >
+    <h1>Command Palette (Angular)</h1>
+
+    <p class="subtitle">
+      A fully customizable command palette with dynamic theming and reusable components.
+    </p>
+
+    <div class="actions">
+      <button (click)="isOpen.set(true)" class="open-btn">Open Command Palette</button>
+
+      <div class="hint">Press <kbd>Ctrl</kbd> + <kbd>/</kbd></div>
+    </div>
+
+    <div class="examples">
+      <p>Try commands like:</p>
+      <ul>
+        <li>Change Primary Color</li>
+        <li>Toggle Theme</li>
+        <li>Reset Colors</li>
+      </ul>
+    </div>
+  </section>
+
   <section id="color-setup">
     <h1 [style.--cp-section-title]="tertiaryPalette()['900']">Setup the Color Theme</h1>
     <div class="color-inputs">
