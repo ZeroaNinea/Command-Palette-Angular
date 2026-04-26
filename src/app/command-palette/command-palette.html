@@ -10,8 +10,6 @@
         (keydown)="onKeydown($event)"
       />
       <div class="list">
-        <!-- <div class="item active">Command</div>
-        <div class="item">Command</div> -->
         @for (command of visibleCommands; track $index; let i = $index) {
           <div class="item" [class.active]="i === activeIndex" (click)="onCommand(command)">
             {{ command.label }}
