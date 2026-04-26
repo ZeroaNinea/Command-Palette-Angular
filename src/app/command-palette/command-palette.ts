@@ -32,6 +32,8 @@ export class CommandPalette implements OnChanges, AfterViewChecked {
   filtered: Command[] = [];
   activeIndex = 0;
 
+  private wasOpen = false;
+
   get visibleCommands(): Command[] {
     if (!this.query) return this.commands;
     return this.filtered;
@@ -46,9 +48,10 @@ export class CommandPalette implements OnChanges, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    if (this.isOpen) {
+    if (this.isOpen && !this.wasOpen) {
       this.input?.nativeElement.focus();
     }
+    this.wasOpen = this.isOpen;
   }
 
   filter() {
