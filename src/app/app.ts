@@ -8,6 +8,8 @@ import { Palette } from '../types/palette.alias';
 import { CommandPalette } from './command-palette/command-palette';
 import { ColorInput } from './color-input/color-input';
 import { Command } from '../types/command.alias';
+
+import { ThemeService } from './shared/services/theme-service/theme-service';
 import { CommandRegistry } from './shared/services/command-registry/command-registry';
 
 @Component({
@@ -62,6 +64,7 @@ export class App {
   // ];
 
   public commandRegistry = inject(CommandRegistry);
+  public themeService = inject(ThemeService);
 
   isOpen = signal(false);
 
@@ -79,12 +82,19 @@ export class App {
     }
   }
 
-  primary = signal('#4FC3F7');
-  secondary = signal('#2196F3');
-  tertiary = signal('#086CBC');
-  neutral = signal('#929CA6');
-  neutralVariant = signal('#6E8E9D');
-  error = signal('#E01B24');
+  // primary = signal('#4FC3F7');
+  // secondary = signal('#2196F3');
+  // tertiary = signal('#086CBC');
+  // neutral = signal('#929CA6');
+  // neutralVariant = signal('#6E8E9D');
+  // error = signal('#E01B24');
+
+  primary = this.themeService.primary;
+  secondary = this.themeService.secondary;
+  tertiary = this.themeService.tertiary;
+  neutral = this.themeService.neutral;
+  neutralVariant = this.themeService.neutralVariant;
+  error = this.themeService.error;
 
   primaryPalette = computed<Palette>(() => createPalette(this.primary()));
   secondaryPalette = computed<Palette>(() => createPalette(this.secondary()));

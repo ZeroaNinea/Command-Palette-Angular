@@ -1,7 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { Command } from '../../../../types/command.alias';
 
-import { ThemeService } from '../theme-service.ts/theme-service';
+import { ThemeService } from '../theme-service/theme-service';
 
 @Injectable({
   providedIn: 'root',
