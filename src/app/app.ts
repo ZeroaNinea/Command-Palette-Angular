@@ -1,4 +1,4 @@
-import { Component, computed, signal, HostListener } from '@angular/core';
+import { Component, computed, signal, HostListener, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { createPalette } from './shared/utils/palette.util';
@@ -8,6 +8,7 @@ import { Palette } from '../types/palette.alias';
 import { CommandPalette } from './command-palette/command-palette';
 import { ColorInput } from './color-input/color-input';
 import { Command } from '../types/command.alias';
+import { CommandRegistry } from './shared/services/command-registry/command-registry';
 
 @Component({
   selector: 'app-root',
@@ -18,47 +19,49 @@ import { Command } from '../types/command.alias';
 export class App {
   protected readonly title = signal('Command-Palette-Angular');
 
-  commands: Command[] = [
-    // id: string;
-    // label: string;
-    // keywords?: string[];
-    // shortcut?: string;
-    // payload?: unknown;
-    // handler?: (payload?: unknown) => void;
-    {
-      id: 'alert-1',
-      label: 'Alert 1',
-      keywords: ['alert', '1'],
-      shortcut: 'a1',
-      handler: () => alert('Alert 1'),
-    },
-    {
-      id: 'alert-2',
-      label: 'Alert 2',
-      keywords: ['alert', '2'],
-      shortcut: 'a2',
-      handler: () => alert('Alert 2'),
-    },
-    {
-      id: 'primary-red',
-      label: 'Set Primary to Red',
-      handler: () => this.primary.set('#ff4d4f'),
-    },
-    {
-      id: 'primary-blue',
-      label: 'Set Primary to Blue',
-      handler: () => this.primary.set('#4FC3F7'),
-    },
-    {
-      id: 'reset',
-      label: 'Reset Colors',
-      handler: () => {
-        this.primary.set('#4FC3F7');
-        this.secondary.set('#2196F3');
-        this.tertiary.set('#086CBC');
-      },
-    },
-  ];
+  // commands: Command[] = [
+  //   // id: string;
+  //   // label: string;
+  //   // keywords?: string[];
+  //   // shortcut?: string;
+  //   // payload?: unknown;
+  //   // handler?: (payload?: unknown) => void;
+  //   {
+  //     id: 'alert-1',
+  //     label: 'Alert 1',
+  //     keywords: ['alert', '1'],
+  //     shortcut: 'a1',
+  //     handler: () => alert('Alert 1'),
+  //   },
+  //   {
+  //     id: 'alert-2',
+  //     label: 'Alert 2',
+  //     keywords: ['alert', '2'],
+  //     shortcut: 'a2',
+  //     handler: () => alert('Alert 2'),
+  //   },
+  //   {
+  //     id: 'primary-red',
+  //     label: 'Set Primary to Red',
+  //     handler: () => this.primary.set('#ff4d4f'),
+  //   },
+  //   {
+  //     id: 'primary-blue',
+  //     label: 'Set Primary to Blue',
+  //     handler: () => this.primary.set('#4FC3F7'),
+  //   },
+  //   {
+  //     id: 'reset',
+  //     label: 'Reset Colors',
+  //     handler: () => {
+  //       this.primary.set('#4FC3F7');
+  //       this.secondary.set('#2196F3');
+  //       this.tertiary.set('#086CBC');
+  //     },
+  //   },
+  // ];
+
+  public commandRegistry = inject(CommandRegistry);
 
   isOpen = signal(false);
 
