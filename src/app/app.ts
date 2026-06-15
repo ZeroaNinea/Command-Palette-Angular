@@ -21,48 +21,6 @@ import { CommandRegistry } from './shared/services/command-registry/command-regi
 export class App {
   protected readonly title = signal('Command-Palette-Angular');
 
-  // commands: Command[] = [
-  //   // id: string;
-  //   // label: string;
-  //   // keywords?: string[];
-  //   // shortcut?: string;
-  //   // payload?: unknown;
-  //   // handler?: (payload?: unknown) => void;
-  //   {
-  //     id: 'alert-1',
-  //     label: 'Alert 1',
-  //     keywords: ['alert', '1'],
-  //     shortcut: 'a1',
-  //     handler: () => alert('Alert 1'),
-  //   },
-  //   {
-  //     id: 'alert-2',
-  //     label: 'Alert 2',
-  //     keywords: ['alert', '2'],
-  //     shortcut: 'a2',
-  //     handler: () => alert('Alert 2'),
-  //   },
-  //   {
-  //     id: 'primary-red',
-  //     label: 'Set Primary to Red',
-  //     handler: () => this.primary.set('#ff4d4f'),
-  //   },
-  //   {
-  //     id: 'primary-blue',
-  //     label: 'Set Primary to Blue',
-  //     handler: () => this.primary.set('#4FC3F7'),
-  //   },
-  //   {
-  //     id: 'reset',
-  //     label: 'Reset Colors',
-  //     handler: () => {
-  //       this.primary.set('#4FC3F7');
-  //       this.secondary.set('#2196F3');
-  //       this.tertiary.set('#086CBC');
-  //     },
-  //   },
-  // ];
-
   public commandRegistry = inject(CommandRegistry);
   public themeService = inject(ThemeService);
 
