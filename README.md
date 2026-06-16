@@ -20,6 +20,14 @@ ng build --base-href="https://ZeroaNinea.github.io/Command-Palette-Angular/"
 npx angular-cli-ghpages --dir=dist/Command-Palette-Angular/browser
 ```
 
+### Planned Features
+
+1. Command History
+2. Nested Commands
+3. Plugin API
+4. Documentation
+5. Publish package
+
 ## Links
 
 - Medium (Part 1): [https://medium.com/@heghine.dev357/creating-a-command-palette-component-in-angular-part-1-466a8f2dd7f5](https://medium.com/@heghine.dev357/creating-a-command-palette-component-in-angular-part-1-466a8f2dd7f5)
