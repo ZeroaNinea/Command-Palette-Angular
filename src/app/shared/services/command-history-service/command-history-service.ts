@@ -9,14 +9,30 @@ export class CommandHistoryService {
   private history = signal<HistoryEntry[]>([]);
 
   record(commandId: string) {
-    const historyEntry = this.history().find((entry) => entry.commandId === commandId);
-    const newHistoryEntry: HistoryEntry = {
-      commandId,
-      usageCount: historyEntry?.usageCount ? historyEntry.usageCount + 1 : 1,
-      lastUsed: Date.now(),
-    };
-    this.history.update((history) => [newHistoryEntry, ...history]);
-    this.history.update((history) => history.filter((entry) => entry.commandId !== commandId));
+    this.history.update((history) => {
+      const existing = history.find((entry) => entry.commandId === commandId);
+
+      if (!existing) {
+        return [
+          {
+            commandId,
+            usageCount: 1,
+            lastUsed: Date.now(),
+          },
+          ...history,
+        ];
+      }
+
+      return history.map((entry) =>
+        entry.commandId === commandId
+          ? {
+              ...entry,
+              usageCount: entry.usageCount + 1,
+              lastUsed: Date.now(),
+            }
+          : entry,
+      );
+    });
   }
 
   getHistory() {
