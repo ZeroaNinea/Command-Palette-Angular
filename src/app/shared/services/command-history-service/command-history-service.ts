@@ -6,7 +6,7 @@ import { HistoryEntry } from '../../../../types/history-entry.interface';
   providedIn: 'root',
 })
 export class CommandHistoryService {
-  private history = signal<HistoryEntry[]>([]);
+  history = signal<HistoryEntry[]>([]);
 
   record(commandId: string) {
     this.history.update((history) => {

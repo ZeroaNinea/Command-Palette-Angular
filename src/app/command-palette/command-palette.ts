@@ -7,11 +7,13 @@ import {
   ViewChild,
   ElementRef,
   AfterViewChecked,
+  inject,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { Command } from '../../types/command.alias';
+import { CommandHistoryService } from '../shared/services/command-history-service/command-history-service';
 
 @Component({
   selector: 'app-command-palette',
@@ -33,9 +35,19 @@ export class CommandPalette implements OnChanges, AfterViewChecked {
   activeIndex = 0;
 
   private wasOpen = false;
+  private commandHistoryService = inject(CommandHistoryService);
 
   get visibleCommands(): Command[] {
-    if (!this.query) return this.commands;
+    if (!this.query) {
+      const history = this.commandHistoryService.history();
+      return this.commands.slice().sort((a, b) => {
+        const aUsage = history.find((h) => h.commandId === a.id)?.usageCount ?? 0;
+
+        const bUsage = history.find((h) => h.commandId === b.id)?.usageCount ?? 0;
+
+        return bUsage - aUsage;
+      });
+    }
     return this.filtered;
   }
 
@@ -56,12 +68,27 @@ export class CommandPalette implements OnChanges, AfterViewChecked {
 
   filter() {
     const q = this.query.toLowerCase();
+    const history = this.commandHistoryService.history();
 
-    this.filtered = this.commands.filter(
-      (cmd) =>
-        cmd.label.toLowerCase().includes(q) ||
-        cmd.keywords?.some((k) => k.toLowerCase().includes(q)),
-    );
+    this.filtered = this.commands
+      .filter(
+        (cmd) =>
+          cmd.label.toLowerCase().includes(q) ||
+          cmd.keywords?.some((k) => k.toLowerCase().includes(q)),
+      )
+      .sort((a, b) => {
+        const aUsage = history.find((h) => h.commandId === a.id)?.usageCount ?? 0;
+
+        const bUsage = history.find((h) => h.commandId === b.id)?.usageCount ?? 0;
+
+        return bUsage - aUsage;
+      });
+
+    // this.filtered = this.commands.filter(
+    //   (cmd) =>
+    //     cmd.label.toLowerCase().includes(q) ||
+    //     cmd.keywords?.some((k) => k.toLowerCase().includes(q)),
+    // );
 
     this.activeIndex = 0;
   }
