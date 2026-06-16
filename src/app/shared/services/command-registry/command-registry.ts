@@ -11,7 +11,7 @@ export class CommandRegistry {
   readonlyCommands = this.commands.asReadonly();
 
   constructor(private themeService: ThemeService) {
-    const initialCommands = [
+    const initialCommands: Command[] = [
       {
         id: 'alert-1',
         label: 'Alert 1',
