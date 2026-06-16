@@ -6,10 +6,16 @@ import { HistoryEntry } from '../../../../types/history-entry.interface';
   providedIn: 'root',
 })
 export class CommandHistoryService {
-  private history = signal<string[]>([]);
+  private history = signal<HistoryEntry[]>([]);
 
   record(commandId: string) {
-    this.history.update((history) => [commandId, ...history]);
+    const historyEntry = this.history().find((entry) => entry.commandId === commandId);
+    const newHistoryEntry: HistoryEntry = {
+      commandId,
+      usageCount: historyEntry?.usageCount ? historyEntry.usageCount + 1 : 1,
+      lastUsed: Date.now(),
+    };
+    this.history.update((history) => [newHistoryEntry, ...history]);
   }
 
   getHistory() {
