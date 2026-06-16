@@ -16,6 +16,7 @@ export class CommandHistoryService {
       lastUsed: Date.now(),
     };
     this.history.update((history) => [newHistoryEntry, ...history]);
+    this.history.update((history) => history.filter((entry) => entry.commandId !== commandId));
   }
 
   getHistory() {
