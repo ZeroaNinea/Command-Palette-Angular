@@ -11,6 +11,7 @@ import { Command } from '../types/command.alias';
 
 import { ThemeService } from './shared/services/theme-service/theme-service';
 import { CommandRegistry } from './shared/services/command-registry/command-registry';
+import { CommandHistoryService } from './shared/services/command-history-service/command-history-service';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +24,7 @@ export class App {
 
   public commandRegistry = inject(CommandRegistry);
   public themeService = inject(ThemeService);
+  public commandHistoryService = inject(CommandHistoryService);
 
   isOpen = signal(false);
 
@@ -62,6 +64,7 @@ export class App {
   errorPalette = computed<Palette>(() => createPalette(this.error()));
 
   onCommand(cmd: Command) {
+    this.commandHistoryService.record(cmd.id);
     this.isOpen.set(false);
     cmd.handler?.(cmd.payload);
   }
