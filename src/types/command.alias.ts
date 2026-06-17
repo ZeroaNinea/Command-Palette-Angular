@@ -5,4 +5,6 @@ export type Command = {
   shortcut?: string;
   payload?: unknown;
   handler?: (payload?: unknown) => void;
+
+  children?: Command[];
 };

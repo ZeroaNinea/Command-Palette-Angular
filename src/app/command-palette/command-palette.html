@@ -13,6 +13,10 @@
         @for (command of visibleCommands; track $index; let i = $index) {
           <div class="item" [class.active]="i === activeIndex" (click)="onCommand(command)">
             {{ command.label }}
+
+            @if (command.children?.length) {
+              <span>›</span>
+            }
           </div>
         }
       </div>

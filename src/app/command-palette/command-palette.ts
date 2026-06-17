@@ -33,6 +33,8 @@ export class CommandPalette implements OnChanges, AfterViewChecked {
   query = '';
   filtered: Command[] = [];
   activeIndex = 0;
+  currentCommands: Command[] = [];
+  navigationStack: Command[][] = [];
 
   private wasOpen = false;
   private commandHistoryService = inject(CommandHistoryService);
@@ -40,7 +42,8 @@ export class CommandPalette implements OnChanges, AfterViewChecked {
   get visibleCommands(): Command[] {
     if (!this.query) {
       const history = this.commandHistoryService.history();
-      return this.commands.slice().sort((a, b) => {
+
+      return this.currentCommands.slice().sort((a, b) => {
         const aUsage = history.find((h) => h.commandId === a.id)?.usageCount ?? 0;
 
         const bUsage = history.find((h) => h.commandId === b.id)?.usageCount ?? 0;
@@ -48,6 +51,7 @@ export class CommandPalette implements OnChanges, AfterViewChecked {
         return bUsage - aUsage;
       });
     }
+
     return this.filtered;
   }
 
@@ -56,6 +60,8 @@ export class CommandPalette implements OnChanges, AfterViewChecked {
       this.query = '';
       this.filtered = [];
       this.activeIndex = 0;
+      this.currentCommands = this.commands;
+      this.navigationStack = [];
     }
   }
 
@@ -70,7 +76,7 @@ export class CommandPalette implements OnChanges, AfterViewChecked {
     const q = this.query.toLowerCase();
     const history = this.commandHistoryService.history();
 
-    this.filtered = this.commands
+    this.filtered = this.currentCommands
       .filter(
         (cmd) =>
           cmd.label.toLowerCase().includes(q) ||
@@ -84,18 +90,23 @@ export class CommandPalette implements OnChanges, AfterViewChecked {
         return bUsage - aUsage;
       });
 
-    // this.filtered = this.commands.filter(
-    //   (cmd) =>
-    //     cmd.label.toLowerCase().includes(q) ||
-    //     cmd.keywords?.some((k) => k.toLowerCase().includes(q)),
-    // );
-
     this.activeIndex = 0;
   }
 
   onCommand(cmd: Command) {
+    if (cmd.children?.length) {
+      this.navigationStack.push(this.currentCommands);
+
+      this.currentCommands = cmd.children;
+
+      this.query = '';
+      this.filtered = [];
+      this.activeIndex = 0;
+
+      return;
+    }
+
     this.commandSelected.emit(cmd);
-    cmd.handler?.(cmd.payload);
     this.isOpenChange.emit(false);
   }
 
@@ -127,9 +138,22 @@ export class CommandPalette implements OnChanges, AfterViewChecked {
       this.close();
     }
 
+    if (e.key === 'Backspace' && !this.query) {
+      e.preventDefault();
+      this.goBack();
+    }
+
     setTimeout(() => {
       const el = document.querySelector('.item.active');
       el?.scrollIntoView({ block: 'nearest' });
     });
+  }
+
+  goBack() {
+    const previous = this.navigationStack.pop();
+
+    if (previous) {
+      this.currentCommands = previous;
+    }
   }
 }
